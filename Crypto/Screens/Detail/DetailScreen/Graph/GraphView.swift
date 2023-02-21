@@ -9,13 +9,13 @@ import SwiftUI
 
 struct GraphView: View {
     
-    @ObservedObject var viewModel: GraphViewModel
+    @StateObject var viewModel: GraphViewModel
     
     var body: some View {
         ZStack {
             VStack(alignment: .center, spacing: 10) {
                 HStack(alignment: .bottom, spacing: 26) {
-                    ForEach(viewModel.priceInfoViewModels) { priceInfoViewModel in
+                    ForEach(viewModel.priceInfoViewModels, id: \.self) { priceInfoViewModel in
                         Rectangle()
                             .foregroundColor(priceInfoViewModel.color)
                             .frame(width: 35, height: (Double(viewModel.fullBarHeight) / viewModel.maxValue) * priceInfoViewModel.price)
@@ -24,7 +24,7 @@ struct GraphView: View {
                 }
                 divider
                 HStack(spacing: 9) {
-                    ForEach(viewModel.priceInfoViewModels) { val in
+                    ForEach(viewModel.priceInfoViewModels, id: \.self) { val in
                         Text(val.day)
                     }
                     .frame(width: 50, height: 30)
@@ -52,14 +52,14 @@ private extension GraphView {
     }
 }
 
- let coinInfo: [PeriodPrices] = [
-    PeriodPrices(id: "", date: "12:23", price: 32.23),
-    PeriodPrices(id: "", date: "13:32", price: 1.23),
-    PeriodPrices(id: "", date: "14:43", price: 3.23)
-]
+// let coinInfo: [PeriodPrices] = [
+//    PeriodPrices(id: "", date: "12:23", price: 32.23),
+//    PeriodPrices(id: "", date: "13:32", price: 1.23),
+//    PeriodPrices(id: "", date: "14:43", price: 3.23)
+//]
 
 struct GraphComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        GraphView(viewModel: .init(coinInfo: [PeriodPrices(id: "", date: "", price: 23.2)], coin: Coins(id: "", name: "", price: 232.23, imageURL: ""), apiModel: ApiModel()))
+        GraphView(viewModel: .init(coin: Coins(id: "", name: "", price: 32.23, imageURL: ""), apiModel: ApiModel()))
     }
 }

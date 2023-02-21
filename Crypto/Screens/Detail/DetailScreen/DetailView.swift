@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     
     @ObservedObject var viewModel: DetailViewModel
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -17,7 +18,7 @@ struct DetailView: View {
                     .ignoresSafeArea()
                 VStack {
                     ScrollView {
-                        GraphView(viewModel: .init(coinInfo: coinInfo, coin: viewModel.coin, apiModel: ApiModel()))
+                        GraphView(viewModel: .init(coin: viewModel.coin, apiModel: ApiModel()))
                         main
                     }
                     createBuyCoinButton(text: "buy" + " " + "\(viewModel.coin.name)", action: {})
@@ -76,7 +77,11 @@ private extension DetailView {
             .background(Color.gray)
     }
     
-    
+    var createTime: some View {
+        Divider()
+            .frame( width: UIScreen.main.bounds.width / 1.1, height: 1)
+            .background(Color.gray)
+    }
     func createNewsRow(newsModel: News) -> some View {
         VStack {
             HStack {
