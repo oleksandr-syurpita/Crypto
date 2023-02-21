@@ -33,6 +33,8 @@ struct GraphView: View {
                     .cornerRadius(40)
                     .padding(.bottom, 10)
                 }
+            }.onAppear{
+                viewModel.checkPrices()
             }
         }
         .frame(width: 330, height: 330, alignment: .bottom)
@@ -50,16 +52,14 @@ private extension GraphView {
     }
 }
 
- let coinInfo: [PriceInfo] = [
-     PriceInfo(price: 90.4, day: "01.11"),
-     PriceInfo(price: 21.0, day: "02.11"),
-     PriceInfo(price: 54.4, day: "03.11"),
-     PriceInfo(price: 32.4, day: "04.11"),
-     PriceInfo(price: 54.4, day: "05.11")
- ]
+ let coinInfo: [PeriodPrices] = [
+    PeriodPrices(id: "", date: "12:23", price: 32.23),
+    PeriodPrices(id: "", date: "13:32", price: 1.23),
+    PeriodPrices(id: "", date: "14:43", price: 3.23)
+]
 
 struct GraphComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        GraphView(viewModel: .init(coinInfo: coinInfo))
+        GraphView(viewModel: .init(coinInfo: [PeriodPrices(id: "", date: "", price: 23.2)], coin: Coins(id: "", name: "", price: 232.23, imageURL: ""), apiModel: ApiModel()))
     }
 }

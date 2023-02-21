@@ -10,7 +10,6 @@ import SwiftUI
 struct DetailView: View {
     
     @ObservedObject var viewModel: DetailViewModel
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -18,12 +17,12 @@ struct DetailView: View {
                     .ignoresSafeArea()
                 VStack {
                     ScrollView {
-                        GraphView(viewModel: .init(coinInfo: coinInfo))
+                        GraphView(viewModel: .init(coinInfo: coinInfo, coin: viewModel.coin, apiModel: ApiModel()))
                         main
                     }
-                    createBuyCoinButton(text: "buy" + " " + "\(viewModel.coinName.name)", action: {})
+                    createBuyCoinButton(text: "buy" + " " + "\(viewModel.coin.name)", action: {})
                 }
-                .createToolbarDetail(action: { viewModel.navigationBack()}, text: "\(viewModel.coinName.name)")
+                .createToolbarDetail(action: { viewModel.navigationBack()}, text: "\(viewModel.coin.name)")
             }.onAppear {
                 viewModel.checkDetails()
             }
@@ -36,7 +35,7 @@ private extension DetailView {
     var coinPrice: some View {
         HStack {
             HStack {
-                Text("$" + (viewModel.coinName.price.toString()))
+                Text("$" + (viewModel.coin.price.toString()))
                     .font(.system(size: 17))
                     .foregroundColor(.red)
             }
@@ -58,7 +57,7 @@ private extension DetailView {
                     .padding(.leading, 20)
                 Spacer()
             }
-            ForEach(viewModel.newsModels) { newsModel in
+            ForEach(viewModel.detailsNews) { newsModel in
                 createNewsRow(newsModel: newsModel)
             }
         }
@@ -80,13 +79,6 @@ private extension DetailView {
     
     func createNewsRow(newsModel: News) -> some View {
         VStack {
-            HStack {
-                Text(newsModel.id)
-                    .font(.system( size: 20, weight: .bold))
-                    .foregroundColor(Color.white)
-                    .padding(.leading, 20)
-                Spacer()
-            }
             HStack {
                 Text("\(newsModel.title)")
                     .font(.system( size: 18, weight: .medium))
@@ -123,6 +115,6 @@ private extension DetailView {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(viewModel: .init(coinName: Coins(id: "Bitcoin", name: "Bitcoin", price: 312312.312, imageURL: ""), apiModel: ApiModel()))
+        DetailView(viewModel: .init(coin: Coins(id: "Bitcoin", name: "Bitcoin", price: 312312.312, imageURL: ""), apiModel: ApiModel()))
     }
 }

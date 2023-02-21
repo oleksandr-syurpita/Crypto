@@ -34,7 +34,7 @@ class MainCoordinator: ObservableObject {
     }
     
     private func moveToDetails(detail: Coins) {
-        let coordinator = DetailCoordinator(viewModel: DetailViewModel(coinName: detail, apiModel: ApiModel()))
+        let coordinator = DetailCoordinator(viewModel: DetailViewModel(coin: detail, apiModel: ApiModel()))
         coordinator.onResult = { [weak self] result in
             switch result {
             case .navigationBack:

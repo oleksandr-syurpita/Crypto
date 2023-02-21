@@ -24,7 +24,7 @@ struct DetailLoadingView: View {
                         main
                     }
                 }
-                .createToolbarDetail(action: {}, text: "\(viewModel.coinName.name)")
+                .createToolbarDetail(action: {}, text: "\(viewModel.coin.name)")
             }
         }
     }
@@ -53,7 +53,7 @@ private extension DetailLoadingView {
                     .padding(.leading, 30)
                 Spacer()
             }
-            ForEach(viewModel.newsModels, id: \.id) { newsModel in
+            ForEach(viewModel.detailsNews, id: \.id) { newsModel in
                 createNewsRow(newsModel: newsModel)
             }
         }
@@ -96,6 +96,6 @@ private extension DetailLoadingView {
 
 struct DetailLoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailLoadingView(viewModel: .init(coinName: Coins(id: "1", name: "ok", price: 123.312, imageURL: ""), apiModel: ApiModel()))
+        DetailLoadingView(viewModel: .init(coin: Coins(id: "1", name: "ok", price: 123.312, imageURL: ""), apiModel: ApiModel()))
     }
 }
