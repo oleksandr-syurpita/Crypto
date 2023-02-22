@@ -18,7 +18,7 @@ struct GraphView: View {
                     ForEach(viewModel.priceInfoViewModels, id: \.self) { priceInfoViewModel in
                         Rectangle()
                             .foregroundColor(priceInfoViewModel.color)
-                            .frame(width: 35, height: (Double(viewModel.fullBarHeight) / viewModel.maxValue) * priceInfoViewModel.price)
+                            .frame(width: 35, height: (Double(viewModel.fullBarHeight) / viewModel.maxValue) * (priceInfoViewModel.price) / 250)
                             .cornerRadius(.infinity)
                     }
                 }
@@ -51,12 +51,6 @@ private extension GraphView {
             .padding([.trailing, .leading], 25)
     }
 }
-
-// let coinInfo: [PeriodPrices] = [
-//    PeriodPrices(id: "", date: "12:23", price: 32.23),
-//    PeriodPrices(id: "", date: "13:32", price: 1.23),
-//    PeriodPrices(id: "", date: "14:43", price: 3.23)
-//]
 
 struct GraphComponentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -92,7 +92,7 @@ private extension DetailView {
                 Spacer()
             }
             HStack {
-                Text("\(newsModel.date)")
+                Text("\(newsModel.date.convertCoin(time: newsModel.date)) ago")
                     .font(.system( size: 18, weight: .medium))
                     .foregroundColor(Color.gray.opacity(0.8))
                     .padding(.leading, 20)

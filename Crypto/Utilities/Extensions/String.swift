@@ -18,4 +18,63 @@ extension String {
             arguments: vars
         )
     }
+
+    func toDate(withFormat format: String = "MM/dd/yyyy")-> Date?{
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+
+        return date
+
+    }
+    
+    func toDateCoin(withFormat format: String = "MM/dd/yyyy HH:mm")-> Date?{
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+
+        return date
+
+    }
+    
+    func convertCoin(time: String) -> String {
+        
+        let toDate = time.description.toDateCoin()
+        
+        guard let toString = toDate?.toStringCoin() else { return "Error" }
+        
+        return toString
+    }
+    
+    func convertGraph(time: String) -> String {
+        
+        let toDate = time.description.toDate()
+        
+        guard let toString = toDate?.toString() else { return "Error" }
+        
+        return toString
+    }
+}
+
+extension Date {
+
+    func toString(withFormat format: String = "MM.dd") -> String {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let str = dateFormatter.string(from: self)
+
+        return str
+    }
+    
+    func toStringCoin(withFormat format: String = "HH") -> String {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let str = dateFormatter.string(from: self)
+
+        return str
+    }
 }

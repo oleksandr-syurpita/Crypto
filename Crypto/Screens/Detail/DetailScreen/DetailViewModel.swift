@@ -21,8 +21,6 @@ class DetailViewModel: ObservableObject {
 
     let apiModel: ApiModel
     var coin: Coins
-    var tempString: [String] = []
-    var tempDate: [Date] = []
     
     init(coin: Coins,apiModel: ApiModel) {
         self.coin = coin
@@ -33,13 +31,6 @@ class DetailViewModel: ObservableObject {
         apiModel.detailsCheck(id: coin.id) { detail in
             for news in detail.news {
                 self.detailsNews.append(news)
-                self.tempString.append(news.date)
-            }
-//
-//            print("next time")
-
-            for temp in self.tempDate {
-                print(temp)
             }
         }
     }
@@ -47,7 +38,6 @@ class DetailViewModel: ObservableObject {
         onResult?(.navigationBack)
     }
 }
-
 
 struct NewNews: Identifiable {
     let id: String
