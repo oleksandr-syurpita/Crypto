@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 extension View {
+    
     func createToolbar(text: String) -> some View {
         self.toolbar(content: {
             ToolbarItem(placement: .principal) {
@@ -62,5 +63,4 @@ extension View {
             }
         })
     }
-
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct IntroView: View {
     
     @ObservedObject var viewModel: IntroViewModel
+    
     var coins: Coins
     
     var body: some View {
@@ -37,7 +38,6 @@ extension IntroView {
     var topText: some View {
         VStack(spacing: 20) {
             createText(text: "Welcome", size: 40)
-            
             createText(text: "To the Crypto", size: 30)
         }.padding(.top, 20)
             .opacity(viewModel.animation ? 1.0 : 0.0)
@@ -54,7 +54,7 @@ extension IntroView {
         VStack {
             createButton(action: {
                 viewModel.navigation(coins: coins)
-                viewModel.apiCallCheck()
+                viewModel.checkCoins()
             }, text: "Let’s start!")
         }.padding(.bottom,30)
     }

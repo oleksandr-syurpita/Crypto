@@ -18,7 +18,18 @@ class DetailViewModel: ObservableObject {
     @Published var detailsNews =  [News]()
     @Published var errorHandler = false
     @Published var loading = true
-    @Published var price = Price(currentPrice: 3232.123, periodPrices: [PeriodPrices(id: "", date: "", price: 231.32)], news: [News(id: "", date: "", title: "", url: "")])
+    @Published var price = Price(
+        currentPrice: 3232.123,
+        periodPrices: [PeriodPrices(
+            id: String(),
+            date: String(),
+            price: 231.32)],
+        news: [News(
+            id: String(),
+            date: String(),
+            title: String(),
+            url: String())])
+    
     let apiModel: ApiModel
     var coin: Coins
 
@@ -26,7 +37,6 @@ class DetailViewModel: ObservableObject {
         self.coin = coin
         self.apiModel = apiModel
     }
-    
     
     func checkDetail() {
         apiModel.testDetail(id: coin.id) { detail in
@@ -36,7 +46,6 @@ class DetailViewModel: ObservableObject {
                 for news in price.news {
                     self.detailsNews.append(news)
                     self.loading = false
-
                 }
             case .failure(let error):
                 if error == .error {
@@ -49,11 +58,4 @@ class DetailViewModel: ObservableObject {
     func navigationBack() {
         onResult?(.navigationBack)
     }
-}
-
-struct NewNews: Identifiable {
-    let id: String
-    let date: Date
-    let title: String
-    let url: String
 }

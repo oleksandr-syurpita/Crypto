@@ -18,7 +18,9 @@ struct GraphView: View {
                     ForEach(viewModel.priceInfoViewModels, id: \.self) { priceInfoViewModel in
                         Rectangle()
                             .foregroundColor(priceInfoViewModel.color)
-                            .frame(width: 35, height: (Double(viewModel.fullBarHeight) / viewModel.maxValue) * (priceInfoViewModel.price) / 250)
+                            .frame(
+                                width: 35, height: (Double(
+                                    viewModel.fullBarHeight) / viewModel.maxValue) * (priceInfoViewModel.price) / 250)
                             .cornerRadius(.infinity)
                     }
                 }

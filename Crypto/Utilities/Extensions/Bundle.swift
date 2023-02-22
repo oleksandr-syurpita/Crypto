@@ -9,8 +9,6 @@ import Foundation
 
 extension Bundle {
     
-    // MARK: Version
-
     var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? String()
     }

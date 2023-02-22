@@ -41,7 +41,6 @@ extension SettingsView {
                                 .foregroundColor(Color.white)
                                 .padding()
                             Spacer()
-                            
                             Toggle(isOn: isOn, label: {})
                                 .toggleStyle(SwitchToggleStyle(tint: Color.cultured))
                                 .frame(width: 60, height: 40)
@@ -73,7 +72,6 @@ extension SettingsView {
                             .background(Color.carbon)
                             .cornerRadius(15)
                             .foregroundColor(.white)
-
                     }
                     .padding([.leading, .trailing], 20)
                 }

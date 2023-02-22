@@ -14,7 +14,7 @@ struct DetailErrorView: View {
                 Color.main
                     .ignoresSafeArea()
                 VStack {
-                    all
+                    detailError
                 }
             }
         }
@@ -23,7 +23,7 @@ struct DetailErrorView: View {
 
 extension DetailErrorView {
     
-    var all: some View {
+    var detailError: some View {
         VStack(spacing: 20) {
             image
             text

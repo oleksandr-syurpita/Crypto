@@ -20,4 +20,3 @@ struct SettingCoordinatorView: View {
         }
     }
 }
-

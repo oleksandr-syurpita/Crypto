@@ -24,5 +24,4 @@ extension Image {
     static var vector: Image {
         Image("Vector")
     }
-
 }

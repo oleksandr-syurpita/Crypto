@@ -20,11 +20,10 @@ struct IntroCoordinatorView: View {
                     unwrapping: $coordinator.route,
                     case: /IntroCoordinator.Route.navigationMain,
                     destination: {(coordinator: Binding<MainCoordinator>) in
-                    MainCoordinatorView(coordinator: coordinator.wrappedValue).navigationBarBackButtonHidden(true)
+                    MainCoordinatorView(coordinator: coordinator.wrappedValue)
+                    .navigationBarBackButtonHidden(true)
                 }, onNavigate: { _ in}) {}
-
             }
         }
     }
 }
-

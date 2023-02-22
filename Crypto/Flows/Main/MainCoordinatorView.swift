@@ -20,13 +20,16 @@ struct MainCoordinatorView: View {
                     unwrapping: $coordinator.route,
                     case: /MainCoordinator.Route.navigationToSettings,
                     destination: {(coordinator: Binding<SettingCoordinator>) in
-                    SettingCoordinatorView(coordinator: coordinator.wrappedValue).navigationBarBackButtonHidden(true)
+                    SettingCoordinatorView(coordinator: coordinator.wrappedValue)
+                    .navigationBarBackButtonHidden(true)
                 }, onNavigate: { _ in}) {}
+                
                 NavigationLink(
                     unwrapping: $coordinator.route,
                     case: /MainCoordinator.Route.navigationToDetail,
                     destination: {(coordinator: Binding<DetailCoordinator>) in
-                        DetailCoordinatorView(coordinator: coordinator.wrappedValue).navigationBarBackButtonHidden(true)
+                    DetailCoordinatorView(coordinator: coordinator.wrappedValue)
+                    .navigationBarBackButtonHidden(true)
                 }, onNavigate: { _ in}) {}
             }
         }

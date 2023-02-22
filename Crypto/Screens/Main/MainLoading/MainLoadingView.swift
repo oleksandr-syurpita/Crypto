@@ -27,14 +27,11 @@ struct MainLoadingView: View {
     }
 }
 
-
-
 private extension MainLoadingView {
     
     var list: some View {
         VStack {
             VStack(spacing: 20) {
-                
                 ForEach(viewModel.coin) { coins in
                     createButton()
                 }
@@ -67,12 +64,10 @@ private extension MainLoadingView {
                             .frame(width: 40, height: 40)
                             .cornerRadius(.infinity)
                         Spacer()
-
                         ShimmerView()
                             .frame(width: 250, height: 30)
                             .cornerRadius(15)
                         Spacer()
-
                     }
                     .cornerRadius(15)
                     .padding([.leading,.trailing], 20)

@@ -24,7 +24,6 @@ class MainCoordinator: ObservableObject {
         self.coins = coins
         viewModel.onResult = { [weak self] result in
             switch result {
-                
             case .navigationToDetail(let detail):
                 self?.moveToDetails(detail: detail)
             case .navigationSettings:

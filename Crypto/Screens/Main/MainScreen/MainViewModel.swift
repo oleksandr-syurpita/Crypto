@@ -30,8 +30,11 @@ class MainViewModel: ObservableObject {
     @Published var coinsTemp = [Coins]()
     @Published var errorHandler = false
     @Published var errorText = ""
-    @Published var coins = CheckCoin(data: [Coins(id: "", name: "", price: 132.12, imageURL: "")])
-
+    @Published var coins = CheckCoin(data: [Coins(
+        id: String(),
+        name: String(),
+        price: 132.12,
+        imageURL: String())])
 
     func moveToDetails(detail: Coins) {
         onResult?(.navigationToDetail(detail: detail))
@@ -44,7 +47,6 @@ class MainViewModel: ObservableObject {
     init(apiModel: ApiModel) {
         self.apiModel = apiModel
     }
-    
     
     func checkCoins() {
         apiModel.coinCheck { result in
@@ -63,4 +65,3 @@ class MainViewModel: ObservableObject {
         }
     }
 }
-
