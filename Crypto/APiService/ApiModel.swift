@@ -8,29 +8,7 @@
 import Foundation
 
 class ApiModel: ObservableObject {
-    
-    func apiCheck(completion: @escaping (Result<TestApi,NetworkError>) -> Void) {
-        guard let url = URL(string: "https://crypto2211.000webhostapp.com/test.php") else {  return }
-        let request = URLRequest(url: url)
-         URLSession.shared.dataTask(with: request) { (data, responses, error)in
-            guard let responses = responses as? HTTPURLResponse else {return}
-            guard let data = data else {return}
-            if responses.statusCode == 200 {
-                DispatchQueue.main.async {
-                    do {
-                        let decode = try JSONDecoder().decode(TestApi.self, from: data)
-                        completion(.success(decode))
-                    }
-                    catch {
-                        print("error decode")
-                    }
-                }
-            }else {
-                completion(.failure(NetworkError.error))
-            }
-        }.resume()
-    }
-    
+        
     func coinCheck(completion: @escaping (Result<CheckCoin,NetworkError>) -> Void) {
         guard let url = URL(string: "https://crypto2211.000webhostapp.com/getCoins.php") else {  return }
         let request = URLRequest(url: url)
