@@ -12,14 +12,18 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
-                    ScrollView {
-                        list
+                if viewModel.loading {
+                    MainLoadingView()
+                } else {
+                    VStack {
+                        ScrollView {
+                            list
+                        }
+                        settingsButton
                     }
-                    settingsButton
+                    .background(Color.main)
+                    .createToolbar(text: "Crypto")
                 }
-                .background(Color.main)
-                .createToolbar(text: "Crypto")
             } .onAppear {
                 viewModel.checkCoins()
                 viewModel.coinsTemp.removeAll()
@@ -38,6 +42,7 @@ private extension MainView {
                         .background(Color.noire)
                         .cornerRadius(15)
                         .padding([.leading,.trailing], 20)
+                    
                 }
             }
         }
@@ -54,7 +59,7 @@ private extension MainView {
                 .frame(width: 75, height: 75)
                 .background(Color.monochrome)
                 .cornerRadius(15)
-                }
+            }
             .padding([.bottom, .trailing], 15)
         }
     }
@@ -64,10 +69,11 @@ private extension MainView {
             VStack {
                 Button(action: {action?()}) {
                     HStack {
-                        Image("\(coins.imageURL)")
-                            .resizable()
-                            .foregroundColor(Color.white)
-                            .frame(width: 40, height: 40)
+                        AsyncImage(url: URL(string: coins.imageURL)) { image in
+                            image.image?.resizable()
+                        }
+                        .foregroundColor(Color.white)
+                        .frame(width: 40, height: 40)
                         Text(coins.name)
                             .font(.system( size: 18, weight: .bold))
                             .foregroundColor(Color.cultured)
@@ -89,9 +95,9 @@ private extension MainView {
         }
     }
 }
-    struct MainView_Previews: PreviewProvider {
-        static var previews: some View {
-            MainView(viewModel: .init(apiModel: ApiModel()))
-        }
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView(viewModel: .init(apiModel: ApiModel()))
     }
+}
 

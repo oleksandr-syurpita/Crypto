@@ -17,21 +17,34 @@ struct DetailView: View {
                 Color.main
                     .ignoresSafeArea()
                 VStack {
-                    ScrollView {
-                        GraphView(viewModel: .init(coin: viewModel.coin, apiModel: ApiModel()))
-                        main
+                    if viewModel.errorHandler {
+                        DetailErrorView()
+                    } else {
+                        detailView
                     }
-                    createBuyCoinButton(text: "buy" + " " + "\(viewModel.coin.name)", action: {})
                 }
                 .createToolbarDetail(action: { viewModel.navigationBack()}, text: "\(viewModel.coin.name)")
             }.onAppear {
-                viewModel.checkDetails()
+                viewModel.checkDetail()
             }
         }
     }
 }
 
 private extension DetailView {
+    
+    var detailView: some View {
+        VStack { if viewModel.loading {
+            DetailLoadingView()
+        } else {
+            ScrollView {
+                GraphView(viewModel: .init(coin: viewModel.coin, apiModel: ApiModel()))
+                main
+            }
+            createBuyCoinButton(text: "buy" + " " + "\(viewModel.coin.name)", action: {})
+            }
+        }
+    }
     
     var coinPrice: some View {
         HStack {
@@ -58,8 +71,8 @@ private extension DetailView {
                     .padding(.leading, 20)
                 Spacer()
             }
-            ForEach(viewModel.detailsNews) { newsModel in
-                createNewsRow(newsModel: newsModel)
+                ForEach(viewModel.detailsNews) { newsModel in
+                    createNewsRow(newsModel: newsModel)
             }
         }
     }

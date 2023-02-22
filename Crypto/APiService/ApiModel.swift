@@ -72,47 +72,26 @@ class ApiModel: ObservableObject {
              }
         }.resume()
     }
-
-}
-
-struct TestApi: Codable, Identifiable {
     
-    let id: String
-    let prop1: Int
-    let prop2: Bool
-}
-
-struct CheckCoin: Codable {
-    
-    let data: [Coins]
-}
-
-struct Coins: Codable,Identifiable {
-    
-    let id: String
-    let name: String
-    let price: Double
-    let imageURL: String
-}
-
-struct Price: Codable {
-    let currentPrice: Double
-    let periodPrices: [PeriodPrices]
-    let news: [News]
-}
-
-struct News: Codable,Identifiable {
-        
-    let id: String
-    let date: String
-    let title: String
-    let url: String
-    
-}
-
-struct PeriodPrices: Codable {
-
-    let id: String
-    let date: String
-    let price: Double
+    func testDetail(id: String ,completion: @escaping (Result<Price,NetworkError>) -> Void) {
+        guard let url = URL(string: "https://crypto2211.000webhostapp.com/getDetails.php?id=\(id)") else {  return }
+        let request = URLRequest(url: url)
+         URLSession.shared.dataTask(with: request) { (data, responses, error)in
+            guard let responses = responses as? HTTPURLResponse else {return}
+            guard let data = data else {return}
+             if responses.statusCode == 200 {
+                 DispatchQueue.main.async {
+                     do {
+                         let decode = try JSONDecoder().decode(Price.self, from: data)
+                         completion(.success(decode))
+                     }
+                     catch {
+                         print("Here error -->  \(error)")
+                     }
+                 }
+             } else {
+             completion(.failure(NetworkError.error))
+         }
+        }.resume()
+    }
 }

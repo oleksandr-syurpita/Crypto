@@ -54,16 +54,9 @@ class IntroViewModel: ObservableObject {
             switch result {
             case .success(let coins):
                 self.coins = coins
-                
                 for string in self.coins.data {
-//                    print(string.id)
-//                    print(string.name)
-//                    print(string.price)
-//                    print(string.imageURL)
-
                     self.coinsTemp.append(string)
                 }
-//                print(self.coinsTemp)
             case .failure(let error):
                 if error == .error {
                     self.errorText = "Error alert"

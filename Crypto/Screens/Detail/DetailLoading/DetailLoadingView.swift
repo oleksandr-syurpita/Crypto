@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct DetailLoadingView: View {
-    @ObservedObject var viewModel: DetailViewModel
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -24,7 +22,6 @@ struct DetailLoadingView: View {
                         main
                     }
                 }
-                .createToolbarDetail(action: {}, text: "\(viewModel.coin.name)")
             }
         }
     }
@@ -46,16 +43,10 @@ private extension DetailLoadingView {
     
     var news: some View {
         VStack {
-            HStack {
-                ShimmerView()
-                    .frame(width: 150,height: 30)
-                    .cornerRadius(15)
-                    .padding(.leading, 30)
-                Spacer()
-            }
-            ForEach(viewModel.detailsNews, id: \.id) { newsModel in
-                createNewsRow(newsModel: newsModel)
-            }
+            createNewsRow()
+            createNewsRow()
+            createNewsRow()
+
         }
     }
     
@@ -72,7 +63,7 @@ private extension DetailLoadingView {
             .background(Color.gray)
     }
     
-    func createNewsRow(newsModel: News) -> some View {
+    func createNewsRow() -> some View {
         VStack {
             HStack {
                 ShimmerView()
@@ -96,6 +87,6 @@ private extension DetailLoadingView {
 
 struct DetailLoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailLoadingView(viewModel: .init(coin: Coins(id: "1", name: "ok", price: 123.312, imageURL: ""), apiModel: ApiModel()))
+        DetailLoadingView()
     }
 }

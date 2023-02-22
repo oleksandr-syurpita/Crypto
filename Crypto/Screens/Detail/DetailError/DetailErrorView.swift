@@ -16,7 +16,6 @@ struct DetailErrorView: View {
                 VStack {
                     all
                 }
-                .createToolbarDetail(action: {}, text: "Detail")
             }
         }
     }

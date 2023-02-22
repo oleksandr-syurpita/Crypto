@@ -17,7 +17,6 @@ class MainViewModel: ObservableObject {
     
     var onResult: ((Result) -> Void)?
     let apiModel: ApiModel
-
     let coin: [Coins] = [
         Coins(id: "Bitcoin", name: "Bitcoin", price: 21.188, imageURL: "TestImage"),
         Coins(id: "2", name: "2", price: 21.188, imageURL: "TestImage"),
@@ -27,6 +26,7 @@ class MainViewModel: ObservableObject {
         Coins(id: "6", name: "6", price: 21.188, imageURL: "TestImage"),
     ]
     
+    @Published var loading = true
     @Published var coinsTemp = [Coins]()
     @Published var errorHandler = false
     @Published var errorText = ""
@@ -53,10 +53,10 @@ class MainViewModel: ObservableObject {
                 self.coins = coins
                 for string in self.coins.data {
                     self.coinsTemp.append(string)
+                    self.loading = false
                 }
             case .failure(let error):
                 if error == .error {
-                    self.errorText = "Error alert"
                     self.errorHandler = true
                 }
             }

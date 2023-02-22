@@ -14,10 +14,14 @@ class GraphViewModel: ObservableObject {
     @Published var priceInfoViewModels: [PriceInfoViewModel] = []
 
     let maxValue: Double = 100
-    var coin: Coins
     let apiModel: ApiModel
+    var coin: Coins
+        
+    init(coin: Coins, apiModel: ApiModel) {
+        self.coin = coin
+        self.apiModel = apiModel
+    }
     
-
     func checkPrices() {
         apiModel.detailsCheck(id: coin.id) { detail in
             self.priceInfoViewModels = detail.periodPrices.enumerated().map { (index, priceInfo) in
@@ -28,10 +32,5 @@ class GraphViewModel: ObservableObject {
                 )
             }
         }
-    }
-    
-    init(coin: Coins, apiModel: ApiModel) {
-        self.coin = coin
-        self.apiModel = apiModel
     }
 }
