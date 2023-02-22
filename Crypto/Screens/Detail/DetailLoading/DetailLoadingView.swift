@@ -46,7 +46,6 @@ private extension DetailLoadingView {
             createNewsRow()
             createNewsRow()
             createNewsRow()
-
         }
     }
     
