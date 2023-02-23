@@ -10,7 +10,7 @@ import Foundation
 class SettingCoordinator: ObservableObject {
     
     enum Result {
-        case navigationBack
+        case navigationBackMain
     }
     
     var onResult: ((Result) -> Void)?
@@ -20,8 +20,8 @@ class SettingCoordinator: ObservableObject {
         self.viewModel = viewModel
         viewModel.onResult = { [ weak self ] result in
             switch result {
-            case .navigationBack:
-                self?.onResult?(.navigationBack)
+            case .navigationBackMain:
+                self?.onResult?(.navigationBackMain)
             }
         }
     }

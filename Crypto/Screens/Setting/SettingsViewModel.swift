@@ -12,12 +12,12 @@ class SettingsViewModel: ObservableObject {
     @Published var isOn = false
     
     enum Result {
-        case navigationBack
+        case navigationBackMain
     }
     
     var onResult: ((Result) -> Void)?
     
     func moveToBack() {
-        onResult?(.navigationBack)
+        onResult?(.navigationBackMain)
     }
 }

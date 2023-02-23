@@ -50,7 +50,7 @@ class MainCoordinator: ObservableObject {
         let coordinator = SettingCoordinator(viewModel: SettingsViewModel())
         coordinator.onResult = { [weak self] result in
             switch result {
-            case .navigationBack:
+            case .navigationBackMain:
                 self?.route = nil
             }
         }
