@@ -22,11 +22,12 @@ struct MainView: View {
                         settingsButton
                     }
                     .background(Color.main)
-                    .createToolbar(text: "Crypto")
+                    .createToolbar(text: "crypto".localized)
                 }
             } .onAppear {
                 viewModel.checkCoins()
                 viewModel.coinsTemp.removeAll()
+                UserDefaultsManager().isOn = false
             }
         }
     }
@@ -38,7 +39,10 @@ private extension MainView {
         VStack {
             VStack(spacing: 20) {
                 ForEach(viewModel.coinsTemp) { coins in
-                    createButton(action: {viewModel.moveToDetails(detail: coins)}, coins: coins)
+                    createButton(action: {
+                        viewModel.moveToDetails(
+                            detail: coins)
+                    }, coins: coins)
                         .background(Color.noire)
                         .cornerRadius(15)
                         .padding([.leading,.trailing], 20)

@@ -16,22 +16,24 @@ class IntroCoordinator: ObservableObject {
     @Published var route: Route?
     
     var viewModel: IntroViewModel
-    var coins: Coins
     
-    init(viewModel: IntroViewModel, coins: Coins) {
-        self.coins = coins
+    init(viewModel: IntroViewModel) {
         self.viewModel = viewModel
         viewModel.onResult = { [weak self] result in
             switch result {
-            case .navigationNext(let coins):
-                self?.moveToMain(coins: coins)
+            case .navigationNext:
+                self?.moveToMain()
             }
         }
     }
     
-    private func moveToMain(coins: Coins) {
+    private func moveToMain() {
         
-        let coordinator = MainCoordinator(viewModel: MainViewModel(apiModel: ApiModel()), coins: coins)
+        let coordinator = MainCoordinator(
+            viewModel: MainViewModel(
+                apiModel: ApiModel()
+            )
+        )
         self.route = .navigationMain(mainCoordinator: coordinator)
     }
 }

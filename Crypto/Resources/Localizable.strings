@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Crypto
+
+  Created by Oleksandr Syurpita on 23.02.2023.
+  
+*/
+
+"welcome" = "Welcome";
+"to_the_Crypto" = "To the Crypto";
+"let’s_start" = "Let’s start!";
+"crypto" = "Crypto";
+"settings" = "Settings";
+"try_Again" = "Try Again";
+"news" = "News";
+"buy" = "Buy %@";
+"seems_like_error_occurred_on_our_side" = "Seems like error occurred on our\n side.";
+"tap_button_below_to_try_again" = "Tap button below to try again";
+"notifications" = "Notifications";
+"our_website" = "Our website";
+"version" = "Version";
+"ago" = "ago";

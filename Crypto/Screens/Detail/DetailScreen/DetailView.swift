@@ -38,10 +38,16 @@ private extension DetailView {
             DetailLoadingView()
         } else {
             ScrollView {
-                GraphView(viewModel: .init(coin: viewModel.coin, apiModel: ApiModel()))
+                GraphView(
+                    viewModel:
+                        GraphViewModel(
+                            periodPrices: viewModel.price.periodPrices
+                        
+                        )
+                )
                 main
             }
-            createBuyCoinButton(text: "buy" + " " + "\(viewModel.coin.name)", action: {})
+            createBuyCoinButton(text: "buy".localizedWithVars(vars: viewModel.coin.name), action: {})
             }
         }
     }
@@ -65,7 +71,7 @@ private extension DetailView {
     var news: some View {
         VStack {
             HStack {
-                Text("News")
+                Text("news".localized)
                     .foregroundColor(Color.white)
                     .font(.system( size: 26, weight: .bold))
                     .padding(.leading, 20)
@@ -99,19 +105,21 @@ private extension DetailView {
         VStack {
             HStack {
                 Text("\(newsModel.title)")
+                    .bold()
                     .font(.system( size: 18, weight: .medium))
-                    .foregroundColor(Color.gray.opacity(0.8))
+                    .foregroundColor(Color.cultured)
                     .padding(.leading, 20)
                 Spacer()
             }
             HStack {
-                Text("\(newsModel.date.convertCoin(time: newsModel.date)) ago")
+                Text("\(newsModel.date.convertCoin(time: newsModel.date))" + " " + "ago".localized)
                     .font(.system( size: 18, weight: .medium))
                     .foregroundColor(Color.gray.opacity(0.8))
                     .padding(.leading, 20)
                 Spacer()
             }
             createDivider
+                .padding(.bottom, 10)
         }
         .padding(.top, 10)
     }
@@ -120,6 +128,7 @@ private extension DetailView {
         VStack {
             Button(action: {action?()}) {
                 Text(text)
+                    .bold()
                     .font(.system( size: 18, weight: .bold))
                     .foregroundColor(.white)
                     .padding()
@@ -133,6 +142,16 @@ private extension DetailView {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(viewModel: .init(coin: Coins(id: "Bitcoin", name: "Bitcoin", price: 312312.312, imageURL: ""), apiModel: ApiModel()))
+        DetailView(
+            viewModel: .init(
+                coin: Coins(
+                    id: "Bitcoin",
+                    name: "Bitcoin",
+                    price: 312312.312,
+                    imageURL: String()
+                ),
+                apiModel: ApiModel()
+            )
+        )
     }
 }

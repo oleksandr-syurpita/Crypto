@@ -10,9 +10,7 @@ import SwiftUI
 struct IntroView: View {
     
     @ObservedObject var viewModel: IntroViewModel
-    
-    var coins: Coins
-    
+        
     var body: some View {
         ZStack {
             image
@@ -37,8 +35,8 @@ extension IntroView {
     
     var topText: some View {
         VStack(spacing: 20) {
-            createText(text: "Welcome", size: 40)
-            createText(text: "To the Crypto", size: 30)
+            createText(text: "welcome".localized, size: 40)
+            createText(text: "to_the_Crypto".localized, size: 30)
         }.padding(.top, 20)
             .opacity(viewModel.animation ? 1.0 : 0.0)
             .onAppear() {
@@ -53,9 +51,8 @@ extension IntroView {
     var bottomButton: some View {
         VStack {
             createButton(action: {
-                viewModel.navigation(coins: coins)
-                viewModel.checkCoins()
-            }, text: "Let’s start!")
+                viewModel.navigation()
+            }, text: "let’s_start".localized)
         }.padding(.bottom,30)
     }
     
@@ -89,6 +86,6 @@ extension IntroView {
 
 struct IntroView_Previews: PreviewProvider {
     static var previews: some View {
-        IntroView(viewModel: .init(apiModel: ApiModel()), coins: Coins(id: "", name: "", price: 123.123, imageURL: ""))
+        IntroView(viewModel: .init())
     }
 }

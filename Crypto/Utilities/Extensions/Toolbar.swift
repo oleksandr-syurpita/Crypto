@@ -14,7 +14,8 @@ extension View {
         self.toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text(text)
-                    .font(.system(size: 35, weight: .bold))
+                    .bold()
+                    .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
             }
         })
@@ -24,7 +25,8 @@ extension View {
         self.toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text(text)
-                    .font(.system(size: 35, weight: .bold))
+                    .bold()
+                    .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -35,7 +37,7 @@ extension View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.white)
-                        .frame(width: 25, height: 25)
+                        .frame(width: 10, height: 16)
                 })
                 .padding(.trailing, 20)
             }
@@ -46,18 +48,19 @@ extension View {
         self.toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text(text)
-                    .font(.system(size: 35, weight: .bold))
+                    .bold()
+                    .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.white)
             }
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
                     action?()
                 }, label: {
-                    Image(systemName: "arrow.left")
+                    Image.arrow
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.white)
-                        .frame(width: 30, height: 30)
+                        .frame(width: 9, height: 15)
                 })
                 .padding(.leading, 20)
             }

@@ -17,11 +17,9 @@ class MainCoordinator: ObservableObject {
     @Published var route: Route?
     
     var viewModel: MainViewModel
-    var coins: Coins
     
-    init(viewModel: MainViewModel, coins: Coins) {
+    init(viewModel: MainViewModel) {
         self.viewModel = viewModel
-        self.coins = coins
         viewModel.onResult = { [weak self] result in
             switch result {
             case .navigationToDetail(let detail):
@@ -33,7 +31,12 @@ class MainCoordinator: ObservableObject {
     }
     
     private func moveToDetails(detail: Coins) {
-        let coordinator = DetailCoordinator(viewModel: DetailViewModel(coin: detail, apiModel: ApiModel()))
+        let coordinator = DetailCoordinator(
+            viewModel: DetailViewModel(
+                coin: detail,
+                apiModel: ApiModel()
+            )
+        )
         coordinator.onResult = { [weak self] result in
             switch result {
             case .navigationBack:
@@ -45,7 +48,7 @@ class MainCoordinator: ObservableObject {
     
     private func moveToSettings() {
         let coordinator = SettingCoordinator(viewModel: SettingsViewModel())
-        coordinator.onResult = { [ weak self ] result in
+        coordinator.onResult = { [weak self] result in
             switch result {
             case .navigationBack:
                 self?.route = nil

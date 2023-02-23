@@ -24,4 +24,8 @@ extension Image {
     static var vector: Image {
         Image("Vector")
     }
+    
+    static var arrow: Image {
+        Image("Arrow")
+    }
 }

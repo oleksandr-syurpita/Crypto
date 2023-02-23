@@ -29,12 +29,16 @@ class MainViewModel: ObservableObject {
     @Published var loading = true
     @Published var coinsTemp = [Coins]()
     @Published var errorHandler = false
-    @Published var errorText = ""
-    @Published var coins = CheckCoin(data: [Coins(
-        id: String(),
-        name: String(),
-        price: 132.12,
-        imageURL: String())])
+    @Published var coins = CheckCoin(
+        data: [
+            Coins(
+                id: String(),
+                name: String(),
+                price: 132.12,
+                imageURL: String()
+            )
+        ]
+    )
 
     func moveToDetails(detail: Coins) {
         onResult?(.navigationToDetail(detail: detail))

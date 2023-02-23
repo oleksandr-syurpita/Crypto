@@ -35,9 +35,7 @@ struct GraphView: View {
                     .cornerRadius(40)
                     .padding(.bottom, 10)
                 }
-            }.onAppear{
-                viewModel.checkPrices()
-            }
+            }.onAppear{}
         }
         .frame(width: 330, height: 330, alignment: .bottom)
         .background(Color.noire)
@@ -56,6 +54,16 @@ private extension GraphView {
 
 struct GraphComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        GraphView(viewModel: .init(coin: Coins(id: "", name: "", price: 32.23, imageURL: ""), apiModel: ApiModel()))
+        GraphView(
+            viewModel: GraphViewModel(
+                periodPrices: [
+                    PeriodPrices(
+                        id: String(),
+                        date: String(),
+                        price: 23.23
+                    )
+                ]
+            )
+        )
     }
 }

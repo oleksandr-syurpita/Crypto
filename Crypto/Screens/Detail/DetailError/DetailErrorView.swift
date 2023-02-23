@@ -27,7 +27,7 @@ extension DetailErrorView {
         VStack(spacing: 20) {
             image
             text
-            createButton(action: {}, text: "Try Again")
+            createButton(action: {}, text: "try_Again".localized)
         }
     }
     
@@ -39,13 +39,14 @@ extension DetailErrorView {
     
     var text: some View {
         VStack(spacing: 0) {
-            Text("Seems like error occurred on our\n side.")
+            Text("seems_like_error_occurred_on_our_side".localized)
                 .font(.system(size: 18))
+                .bold()
                 .foregroundColor(Color.cultured)
                 .multilineTextAlignment(.center)
-
-            Text("Tap button below to try again")
+            Text("tap_button_below_to_try_again".localized)
                 .font(.system(size: 18))
+                .bold()
                 .foregroundColor(Color.cultured)
                 .multilineTextAlignment(.center)
                 .padding(10)
@@ -57,6 +58,7 @@ extension DetailErrorView {
             action?()
         }, label: {
             Text(text)
+                .bold()
                 .font(.system(size: 18))
                 .foregroundColor(.cultured)
         })

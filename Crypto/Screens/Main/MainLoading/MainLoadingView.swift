@@ -21,7 +21,7 @@ struct MainLoadingView: View {
                     settingsButton
                 }
                 .background(Color.main)
-                .createToolbar(text: "Crypto")
+                .createToolbar(text: "crypto".localized)
             }
         }
     }

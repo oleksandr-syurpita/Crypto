@@ -13,15 +13,10 @@ struct CryptoApp: App {
         WindowGroup {
             IntroCoordinatorView(
                 coordinator: IntroCoordinator(
-                    viewModel: IntroViewModel(
-                        apiModel: ApiModel()),
-                        coins: Coins(
-                            id: "",
-                            name: "",
-                            price: 312.123,
-                            imageURL: "")
+                    viewModel: IntroViewModel()
                 )
             )
+//            AppCoordinatorView(coordinator: AppCoordinator(preferences: UserDefaultsManager(), coordinatorIntro: IntroCoordinator(viewModel: IntroViewModel()), coordinatorMain: MainCoordinator(viewModel: MainViewModel(apiModel: ApiModel()))))
         }
     }
 }

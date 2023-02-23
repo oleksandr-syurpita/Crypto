@@ -18,12 +18,14 @@ struct SettingsView: View {
                     .ignoresSafeArea()
                 VStack {
                     ScrollView {
-                        createButtonForToggle(text: "Notifications", isOn: $viewModel.isOn)
-                        createButtonSettings(clicked: {}, text: "Our website")
-                        createButtonVersion(text: "Version", number: "\(Bundle.main.appVersion)")
+                        createButtonForToggle(text: "notifications".localized, isOn: $viewModel.isOn)
+                        createButtonSettings(clicked: {}, text: "our_website".localized)
+                        createButtonVersion(text: "version".localized, number: "\(Bundle.main.appVersion)")
                     }
                 }
-                .createToolbarSettings(action: {viewModel.moveToBack()}, text: "Settings")
+                .createToolbarSettings(
+                    action: viewModel.moveToBack,
+                    text: "settings".localized)
             }
         }
     }
@@ -38,6 +40,7 @@ extension SettingsView {
                         HStack {
                             Text(text)
                                 .font(.system(size: 18))
+                                .bold()
                                 .foregroundColor(Color.white)
                                 .padding()
                             Spacer()
@@ -50,6 +53,7 @@ extension SettingsView {
                 })
             }
         }
+            .frame(width: 330,height: 70)
             .background(Color.noire)
             .cornerRadius(20)
             .padding([.leading, .trailing, .bottom], 20)
@@ -63,11 +67,13 @@ extension SettingsView {
                         Text(text)
                             .font(.system(size: 18))
                             .foregroundColor(Color.white)
+                            .bold()
                             .padding()
                         Spacer()
                         Text("\(number)")
                             .font(.system(size: 18))
                             .foregroundColor(Color.white)
+                            .bold()
                             .padding(10)
                             .background(Color.carbon)
                             .cornerRadius(15)
@@ -77,6 +83,7 @@ extension SettingsView {
                 }
             }
         }
+        .frame(width: 330,height: 70)
         .background(Color.noire)
         .cornerRadius(20)
         .padding([.leading, .trailing, .bottom], 20)
@@ -91,6 +98,7 @@ extension SettingsView {
                             Text(text)
                                 .font(.system(size: 18))
                                 .foregroundColor(Color.white)
+                                .bold()
                                 .padding()
                             Spacer()
                         }
@@ -99,6 +107,7 @@ extension SettingsView {
                 })
             }
         }
+        .frame(width: 330,height: 70)
         .background(Color.noire)
         .cornerRadius(20)
         .padding([.leading, .trailing, .bottom], 20)

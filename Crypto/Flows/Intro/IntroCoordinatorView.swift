@@ -15,7 +15,7 @@ struct IntroCoordinatorView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                IntroView(viewModel: coordinator.viewModel, coins: coordinator.coins)
+                IntroView(viewModel: coordinator.viewModel)
                 NavigationLink(
                     unwrapping: $coordinator.route,
                     case: /IntroCoordinator.Route.navigationMain,

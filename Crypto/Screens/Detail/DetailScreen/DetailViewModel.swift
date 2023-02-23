@@ -20,15 +20,20 @@ class DetailViewModel: ObservableObject {
     @Published var loading = true
     @Published var price = Price(
         currentPrice: 3232.123,
-        periodPrices: [PeriodPrices(
-            id: String(),
-            date: String(),
-            price: 231.32)],
-        news: [News(
-            id: String(),
-            date: String(),
-            title: String(),
-            url: String())])
+        periodPrices: [
+            PeriodPrices(
+                id: String(),
+                date: String(),
+                price: 231.32)],
+        news: [
+            News(
+                id: String(),
+                date: String(),
+                title: String(),
+                url: String()
+            )
+        ]
+    )
     
     let apiModel: ApiModel
     var coin: Coins
@@ -39,11 +44,11 @@ class DetailViewModel: ObservableObject {
     }
     
     func checkDetail() {
-        apiModel.testDetail(id: coin.id) { detail in
-            switch detail {
-            case .success(let price):
-                self.price = price
-                for news in price.news {
+        apiModel.testDetail(id: coin.id) { result in
+            switch result {
+            case .success(let detail):
+                self.price = detail
+                for news in detail.news {
                     self.detailsNews.append(news)
                     self.loading = false
                 }
