@@ -26,8 +26,6 @@
 		84A1417B29A00EC20052BDD6 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1417A29A00EC20052BDD6 /* DetailCoordinator.swift */; };
 		84A1417D29A00F770052BDD6 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1417C29A00F770052BDD6 /* SettingCoordinator.swift */; };
 		84A1417F29A00F8E0052BDD6 /* SettingCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1417E29A00F8E0052BDD6 /* SettingCoordinatorView.swift */; };
-		84A1418129A00FB40052BDD6 /* IntroCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1418029A00FB40052BDD6 /* IntroCoordinatorView.swift */; };
-		84A1418329A010880052BDD6 /* IntroCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1418229A010880052BDD6 /* IntroCoordinator.swift */; };
 		84A1ADF9299E40B5001C7695 /* CryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1ADF8299E40B5001C7695 /* CryptoApp.swift */; };
 		84A1ADFB299E40B5001C7695 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1ADFA299E40B5001C7695 /* IntroView.swift */; };
 		84A1ADFD299E40B7001C7695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A1ADFC299E40B7001C7695 /* Assets.xcassets */; };
@@ -71,8 +69,6 @@
 		84A1417A29A00EC20052BDD6 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		84A1417C29A00F770052BDD6 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		84A1417E29A00F8E0052BDD6 /* SettingCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinatorView.swift; sourceTree = "<group>"; };
-		84A1418029A00FB40052BDD6 /* IntroCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCoordinatorView.swift; sourceTree = "<group>"; };
-		84A1418229A010880052BDD6 /* IntroCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCoordinator.swift; sourceTree = "<group>"; };
 		84A1ADF5299E40B5001C7695 /* Crypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A1ADF8299E40B5001C7695 /* CryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoApp.swift; sourceTree = "<group>"; };
 		84A1ADFA299E40B5001C7695 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
@@ -133,15 +129,6 @@
 				84A1416A299FE7190052BDD6 /* PriceInfo.swift */,
 			);
 			path = Graph;
-			sourceTree = "<group>";
-		};
-		84A1417029A00CC60052BDD6 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				84A1418029A00FB40052BDD6 /* IntroCoordinatorView.swift */,
-				84A1418229A010880052BDD6 /* IntroCoordinator.swift */,
-			);
-			path = Intro;
 			sourceTree = "<group>";
 		};
 		84A1417129A00CCB0052BDD6 /* Setting */ = {
@@ -218,7 +205,6 @@
 				84A1417329A00CDC0052BDD6 /* Main */,
 				84A1417229A00CD10052BDD6 /* Detail */,
 				84A1417129A00CCB0052BDD6 /* Setting */,
-				84A1417029A00CC60052BDD6 /* Intro */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -441,7 +427,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A1418129A00FB40052BDD6 /* IntroCoordinatorView.swift in Sources */,
 				8495C4F429A79A24007AC5E8 /* AppCoordinator.swift in Sources */,
 				84A1AE39299E9235001C7695 /* Double.swift in Sources */,
 				84A1AE3B299EA02A001C7695 /* Bundle.swift in Sources */,
@@ -461,7 +446,6 @@
 				84A1ADF9299E40B5001C7695 /* CryptoApp.swift in Sources */,
 				8468DECB29A3602300B88AAC /* Error.swift in Sources */,
 				84A1416F299FE97D0052BDD6 /* String.swift in Sources */,
-				84A1418329A010880052BDD6 /* IntroCoordinator.swift in Sources */,
 				848F9BB829A64E3100A1EB89 /* Struct.swift in Sources */,
 				84A1AE31299E49EB001C7695 /* Image.swift in Sources */,
 				84A1417729A00DF10052BDD6 /* MainCoordinatorView.swift in Sources */,
