@@ -17,7 +17,7 @@ struct AppCoordinatorView: View {
             ZStack {
                 switch coordinator.route {
                 case .intro:
-                    IntroCoordinatorView(coordinator: coordinator.coordinatorIntro)
+                    IntroView(viewModel: coordinator.introView)
                 case .main:
                     MainCoordinatorView(coordinator: coordinator.coordinatorMain)
                 case .none:

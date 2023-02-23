@@ -15,16 +15,24 @@ class AppCoordinator: ObservableObject {
     }
     
     @Published var route: Route?
-    var coordinatorIntro: IntroCoordinator
+    var introView: IntroViewModel
     var coordinatorMain: MainCoordinator
     
     init(
         preferences: UserDefaultsManager,
-        coordinatorIntro:IntroCoordinator,
+        introView: IntroViewModel,
         coordinatorMain: MainCoordinator
     ) {
-        self.coordinatorIntro = coordinatorIntro
+        self.introView = introView
         self.coordinatorMain = coordinatorMain
+        introView.onResult = {[weak self] result in
+            switch result {
+                
+            case .navigationNext:
+                self?.route = .main
+            }
+        }
+        
         if preferences.isOn {
             route = .main
         } else {
