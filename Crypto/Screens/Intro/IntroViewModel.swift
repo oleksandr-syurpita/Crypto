@@ -19,11 +19,6 @@ class IntroViewModel: ObservableObject {
     @Published var isOns = true
     
     var onResult:((Result) -> Void)?
-    var checkApi = TestApi(
-        id: String(),
-        prop1: 1,
-        prop2: false
-    )
     
     func navigation() {
         onResult?(.navigationNext)

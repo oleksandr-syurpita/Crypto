@@ -11,12 +11,12 @@ import SwiftUI
 struct CryptoApp: App {
     var body: some Scene {
         WindowGroup {
-            IntroCoordinatorView(
-                coordinator: IntroCoordinator(
-                    viewModel: IntroViewModel()
-                )
-            )
-//            AppCoordinatorView(coordinator: AppCoordinator(preferences: UserDefaultsManager(), coordinatorIntro: IntroCoordinator(viewModel: IntroViewModel()), coordinatorMain: MainCoordinator(viewModel: MainViewModel(apiModel: ApiModel()))))
+//            IntroCoordinatorView(
+//                coordinator: IntroCoordinator(
+//                    viewModel: IntroViewModel()
+//                )
+//            )
+            AppCoordinatorView(coordinator: AppCoordinator(preferences: UserDefaultsManager(), coordinatorIntro: IntroCoordinator(viewModel: IntroViewModel()), coordinatorMain: MainCoordinator(viewModel: MainViewModel(apiModel: ApiModel()))))
         }
     }
 }
