@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DetailViewModel: ObservableObject {
     
@@ -14,6 +15,7 @@ class DetailViewModel: ObservableObject {
     }
 
     var onResult: ((Result) -> Void)?
+    var urlString = String()
     
     @Published var detailsNews =  [News]()
     @Published var errorHandler = false
@@ -50,6 +52,7 @@ class DetailViewModel: ObservableObject {
                 self.price = detail
                 for news in detail.news {
                     self.detailsNews.append(news)
+                    self.urlString = news.url
                     self.loading = false
                 }
             case .failure(let error):
@@ -58,6 +61,11 @@ class DetailViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func openURL(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        UIApplication.shared.open(url)
     }
     
     func navigationBack() {

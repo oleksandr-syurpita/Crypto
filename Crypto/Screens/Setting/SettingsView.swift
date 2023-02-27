@@ -92,7 +92,9 @@ extension SettingsView {
     func createButtonSettings(clicked: (() -> Void)?, text: String) -> some View {
         VStack {
             VStack {
-                Button(action: {clicked?()}, label: {
+                Button(action: {
+                    clicked?()
+                }, label: {
                     HStack {
                         HStack {
                             Text(text)

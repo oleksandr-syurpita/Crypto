@@ -34,7 +34,8 @@ struct DetailView: View {
 private extension DetailView {
     
     var detailView: some View {
-        VStack { if viewModel.loading {
+        VStack {
+        if viewModel.loading {
             DetailLoadingView()
         } else {
             ScrollView {
@@ -42,7 +43,6 @@ private extension DetailView {
                     viewModel:
                         GraphViewModel(
                             periodPrices: viewModel.price.periodPrices
-                        
                         )
                 )
                 main
@@ -71,11 +71,15 @@ private extension DetailView {
     var news: some View {
         VStack {
             HStack {
-                Text("news".localized)
-                    .foregroundColor(Color.white)
-                    .font(.system( size: 26, weight: .bold))
-                    .padding(.leading, 20)
-                Spacer()
+                Button(action: {
+                    viewModel.openURL(urlString: viewModel.urlString)
+                }, label: {
+                    Text("news".localized)
+                        .foregroundColor(Color.white)
+                        .font(.system( size: 26, weight: .bold))
+                        .padding(.leading, 20)
+                    Spacer()
+                })
             }
                 ForEach(viewModel.detailsNews) { newsModel in
                     createNewsRow(newsModel: newsModel)
@@ -126,7 +130,9 @@ private extension DetailView {
     
     func createBuyCoinButton(text: String, action: (() -> Void)?) -> some View {
         VStack {
-            Button(action: {action?()}) {
+            Button(action: {
+                action?()
+            }) {
                 Text(text)
                     .bold()
                     .font(.system( size: 18, weight: .bold))

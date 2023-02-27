@@ -55,7 +55,9 @@ private extension MainView {
     var settingsButton: some View {
         HStack {
             Spacer()
-            Button(action: {viewModel.moveToSettings()}) {
+            Button(action: {
+                viewModel.moveToSettings()
+            }) {
                 HStack {
                     Image.vector
                 }
