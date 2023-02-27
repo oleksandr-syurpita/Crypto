@@ -13,7 +13,7 @@ class GraphViewModel: ObservableObject {
     
     @Published var periodPrices: [PeriodPrices] = []
     
-     var priceInfoViewModels: [PriceInfoViewModel] {
+    var priceInfoViewModels: [PriceInfoViewModel] {
         periodPrices.enumerated().map { (index, priceInfo) in
             return PriceInfoViewModel (
                 price: priceInfo.price,

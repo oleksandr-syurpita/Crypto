@@ -10,7 +10,7 @@ import Foundation
 class UserDefaultsManager {
     
     private let showScreen = "show_Screen"
-     var isOn: Bool {
+    var isOn: Bool {
         get {
             UserDefaults.standard.bool(forKey: showScreen)
         }

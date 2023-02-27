@@ -43,9 +43,9 @@ private extension MainView {
                         viewModel.moveToDetails(
                             detail: coins)
                     }, coins: coins)
-                        .background(Color.noire)
-                        .cornerRadius(15)
-                        .padding([.leading,.trailing], 20)
+                    .background(Color.noire)
+                    .cornerRadius(15)
+                    .padding([.leading,.trailing], 20)
                     
                 }
             }

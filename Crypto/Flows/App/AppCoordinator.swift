@@ -15,6 +15,7 @@ class AppCoordinator: ObservableObject {
     }
     
     @Published var route: Route?
+    
     var introView: IntroViewModel
     var coordinatorMain: MainCoordinator
     

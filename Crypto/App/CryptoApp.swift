@@ -17,7 +17,7 @@ struct CryptoApp: App {
                     introView: IntroViewModel(),
                     coordinatorMain: MainCoordinator(
                         viewModel: MainViewModel(
-                        apiModel: ApiModel()
+                            apiModel: ApiModel()
                         )
                     )
                 )

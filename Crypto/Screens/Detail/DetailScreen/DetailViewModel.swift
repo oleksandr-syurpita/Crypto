@@ -13,14 +13,16 @@ class DetailViewModel: ObservableObject {
     enum Result {
         case navigationBack
     }
-
+    
     var onResult: ((Result) -> Void)?
     var urlString = String()
+    let apiModel: ApiModel
+    var coin: Coins
     
     @Published var detailsNews =  [News]()
     @Published var errorHandler = false
     @Published var loading = true
-    @Published var price = Price(
+    @Published var price = CoinDetails(
         currentPrice: 3232.123,
         periodPrices: [
             PeriodPrices(
@@ -37,16 +39,13 @@ class DetailViewModel: ObservableObject {
         ]
     )
     
-    let apiModel: ApiModel
-    var coin: Coins
-
     init(coin: Coins,apiModel: ApiModel) {
         self.coin = coin
         self.apiModel = apiModel
     }
     
     func checkDetail() {
-        apiModel.testDetail(id: coin.id) { result in
+        apiModel.detailsCheck(id: coin.id) { result in
             switch result {
             case .success(let detail):
                 self.price = detail

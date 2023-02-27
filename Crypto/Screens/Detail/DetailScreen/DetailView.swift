@@ -35,19 +35,19 @@ private extension DetailView {
     
     var detailView: some View {
         VStack {
-        if viewModel.loading {
-            DetailLoadingView()
-        } else {
-            ScrollView {
-                GraphView(
-                    viewModel:
-                        GraphViewModel(
-                            periodPrices: viewModel.price.periodPrices
-                        )
-                )
-                main
-            }
-            createBuyCoinButton(text: "buy".localizedWithVars(vars: viewModel.coin.name), action: {})
+            if viewModel.loading {
+                DetailLoadingView()
+            } else {
+                ScrollView {
+                    GraphView(
+                        viewModel:
+                            GraphViewModel(
+                                periodPrices: viewModel.price.periodPrices
+                            )
+                    )
+                    main
+                }
+                createBuyCoinButton(text: "buy".localizedWithVars(vars: viewModel.coin.name), action: {})
             }
         }
     }
@@ -81,8 +81,8 @@ private extension DetailView {
                     Spacer()
                 })
             }
-                ForEach(viewModel.detailsNews) { newsModel in
-                    createNewsRow(newsModel: newsModel)
+            ForEach(viewModel.detailsNews) { newsModel in
+                createNewsRow(newsModel: newsModel)
             }
         }
     }

@@ -11,7 +11,7 @@ import SwiftUINavigation
 struct DetailCoordinatorView: View {
     
     @ObservedObject var coordinator: DetailCoordinator
-
+    
     var body: some View {
         NavigationView {
             ZStack {

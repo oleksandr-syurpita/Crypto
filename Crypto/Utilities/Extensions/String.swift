@@ -19,19 +19,19 @@ extension String {
             arguments: vars
         )
     }
-
+    
     func toDate(withFormat format: String = "MM/dd/yyyy")-> Date?{
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         let date = dateFormatter.date(from: self)
-
+        
         return date
-
+        
     }
     
     func toDateCoin(withFormat format: String = "MM/dd/yyyy HH:mm")-> Date?{
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         let date = dateFormatter.date(from: self)
@@ -41,7 +41,6 @@ extension String {
     func convertCoin(time: String) -> String {
         
         let toDate = time.description.toDateCoin()
-        
         let temp = offsetFromNowString(for: toDate ?? Date.now)
         
         return temp

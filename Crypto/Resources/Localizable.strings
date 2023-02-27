@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  Crypto
-
-  Created by Oleksandr Syurpita on 23.02.2023.
-  
-*/
+ Localizable.strings
+ Crypto
+ 
+ Created by Oleksandr Syurpita on 23.02.2023.
+ 
+ */
 
 "welcome" = "Welcome";
 "to_the_Crypto" = "To the Crypto";

@@ -8,7 +8,7 @@
 import Foundation
 
 class DetailCoordinator: ObservableObject {
- 
+    
     enum Result {
         case navigationBack
     }

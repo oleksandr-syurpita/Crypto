@@ -39,7 +39,7 @@ class MainViewModel: ObservableObject {
             )
         ]
     )
-
+    
     func moveToDetails(detail: Coins) {
         onResult?(.navigationToDetail(detail: detail))
     }
@@ -47,7 +47,7 @@ class MainViewModel: ObservableObject {
     func moveToSettings() {
         onResult?(.navigationSettings)
     }
-
+    
     init(apiModel: ApiModel) {
         self.apiModel = apiModel
     }

@@ -27,14 +27,15 @@ struct Coins: Codable, Identifiable {
     let imageURL: String
 }
 
-struct Price: Codable {
+struct CoinDetails: Codable {
+    
     let currentPrice: Double
     let periodPrices: [PeriodPrices]
     let news: [News]
 }
 
 struct News: Codable, Identifiable {
-        
+    
     let id: String
     let date: String
     let title: String
@@ -43,7 +44,7 @@ struct News: Codable, Identifiable {
 }
 
 struct PeriodPrices: Codable {
-
+    
     let id: String
     let date: String
     let price: Double

@@ -10,7 +10,7 @@ import SwiftUI
 struct MainLoadingView: View {
     
     @ObservedObject var viewModel = MainViewModel(apiModel: ApiModel())
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -50,7 +50,7 @@ private extension MainLoadingView {
                 .frame(width: 75, height: 75)
                 .background(Color.monochrome)
                 .cornerRadius(15)
-                }
+            }
             .padding([.bottom, .trailing], 15)
         }
     }

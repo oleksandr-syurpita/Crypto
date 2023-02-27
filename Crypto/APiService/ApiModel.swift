@@ -8,11 +8,11 @@
 import Foundation
 
 class ApiModel: ObservableObject {
-        
+    
     func coinCheck(completion: @escaping (Result<CheckCoin,NetworkError>) -> Void) {
         guard let url = URL(string: "https://crypto2211.000webhostapp.com/getCoins.php") else {  return }
         let request = URLRequest(url: url)
-         URLSession.shared.dataTask(with: request) { (data, responses, error)in
+        URLSession.shared.dataTask(with: request) { (data, responses, error)in
             guard let responses = responses as? HTTPURLResponse else {return}
             guard let data = data else {return}
             if responses.statusCode == 200 {
@@ -31,45 +31,25 @@ class ApiModel: ObservableObject {
         }.resume()
     }
     
-    func detailsCheck(id: String ,completion: @escaping (Price) -> Void) {
+    func detailsCheck(id: String ,completion: @escaping (Result<CoinDetails,NetworkError>) -> Void) {
         guard let url = URL(string: "https://crypto2211.000webhostapp.com/getDetails.php?id=\(id)") else {  return }
         let request = URLRequest(url: url)
-         URLSession.shared.dataTask(with: request) { (data, responses, error)in
+        URLSession.shared.dataTask(with: request) { (data, responses, error)in
             guard let responses = responses as? HTTPURLResponse else {return}
             guard let data = data else {return}
-             if responses.statusCode == 200 {
-                 DispatchQueue.main.async {
-                     do {
-                         let decode = try JSONDecoder().decode(Price.self, from: data)
-                         completion(decode)
-                     }
-                     catch {
-                         print("Here error -->  \(error)")
-                     }
-                 }
-             }
-        }.resume()
-    }
-    
-    func testDetail(id: String ,completion: @escaping (Result<Price,NetworkError>) -> Void) {
-        guard let url = URL(string: "https://crypto2211.000webhostapp.com/getDetails.php?id=\(id)") else {  return }
-        let request = URLRequest(url: url)
-         URLSession.shared.dataTask(with: request) { (data, responses, error)in
-            guard let responses = responses as? HTTPURLResponse else {return}
-            guard let data = data else {return}
-             if responses.statusCode == 200 {
-                 DispatchQueue.main.async {
-                     do {
-                         let decode = try JSONDecoder().decode(Price.self, from: data)
-                         completion(.success(decode))
-                     }
-                     catch {
-                         print("Here error -->  \(error)")
-                     }
-                 }
-             } else {
-             completion(.failure(NetworkError.error))
-         }
+            if responses.statusCode == 200 {
+                DispatchQueue.main.async {
+                    do {
+                        let decode = try JSONDecoder().decode(CoinDetails.self, from: data)
+                        completion(.success(decode))
+                    }
+                    catch {
+                        print("Here error -->  \(error)")
+                    }
+                }
+            } else {
+                completion(.failure(NetworkError.error))
+            }
         }.resume()
     }
 }

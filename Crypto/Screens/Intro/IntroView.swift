@@ -10,7 +10,7 @@ import SwiftUI
 struct IntroView: View {
     
     @ObservedObject var viewModel: IntroViewModel
-        
+    
     var body: some View {
         ZStack {
             image

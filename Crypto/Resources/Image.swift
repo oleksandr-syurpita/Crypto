@@ -16,7 +16,7 @@ extension Image {
     static var mainImage: Image {
         Image("MainImage")
     }
-
+    
     static var warning: Image {
         Image("Warning")
     }

@@ -32,6 +32,6 @@ struct ShimmerView: View {
                 withAnimation(repeated) {
                     self.opacity = Constants.maxOpacity
                 }
-        }
+            }
     }
 }

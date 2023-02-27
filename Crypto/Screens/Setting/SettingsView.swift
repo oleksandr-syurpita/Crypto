@@ -53,10 +53,10 @@ extension SettingsView {
                 })
             }
         }
-            .frame(width: 330,height: 70)
-            .background(Color.noire)
-            .cornerRadius(20)
-            .padding([.leading, .trailing, .bottom], 20)
+        .frame(width: 330,height: 70)
+        .background(Color.noire)
+        .cornerRadius(20)
+        .padding([.leading, .trailing, .bottom], 20)
     }
     
     func createButtonVersion(text: String, number: String) -> some View {
